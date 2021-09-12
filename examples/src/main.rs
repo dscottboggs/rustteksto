@@ -1,85 +1,86 @@
-rouille::rouille! {
-    externe cagette rouille;
+rustteksto::rustteksto! {
+    exter kesto rustteksto;
 
-    utilisons std::collections::Dictionnaire comme Dico;
+    uzi std::kolektoj::Tradukaĵo kiel Tradu;
 
-    convention CléValeur {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine);
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine>;
+    trajto KlavValoro {
+        fn skribi(&memo, klavo: Ĉeno, valoro: Cxeno);
+        // Ambaŭ la diakritaj    ^ kaj         ^^ ASCII-transliterumado estas
+        // akceptitaj
+        fn legi(&memo, klavo: Ĉeno) -> Rezulto<Malnepra<&Ĉeno>, Ĉeno>;
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaine, Chaine>> = Rien;
+    senmova ŝanĝebla TRADUKAĴO: Malnepra<Tradu<Ĉeno, Ĉeno>> = Nenio;
 
-    structure Concrète;
+    strukt Konkreta;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine) {
-            soit dico = dangereux {
-                DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
+    realigo KlavValoro por Konkreta {
+        funkcio skribi(&memo, klavo: Ĉeno, valoro: Ĉeno) {
+            ebligi tradu = malsekura {
+                TRADUKAĴO.akiri_aŭ_enigo_kun(Defaŭlto::defaŭlto)
             };
-            dico.insérer(clé, valeur);
+            tradu.enmeti(klavo, valoro);
         }
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
-                Bien(dico.lire(&clé))
-            } sinon {
-                Arf("fetchez le dico".vers())
+        funkcio legi(&memo, klavo: Ĉeno) -> Rezulto<Malnepre<&Ĉeno>, Ĉeno> {
+            ĉu ebligi Io(tradu) = malsekura { TRADUKAĴO.kiel_ref() } {
+                Bone(tradu.legi(&klavo))
+            } plu {
+                Er("Tradukaĵo mankas".igi())
             }
         }
     }
 
-    public(cagette) fonction peut_etre(i: u32) -> PeutÊtre<Résultat<u32, Chaine>> {
-        si i % 2 == 1 {
-            si i == 42 {
-                Quelque(Arf(Chaine::depuis("merde")))
-            } sinon {
-                Quelque(Bien(33))
+    publika(kesto) funkcio malnepra(i: u32) -> Malnepre<Rezulto<u32, Ĉeno>> {
+        ĉu i % 2 == 1 {
+            ĉu i == 42 {
+                Io(Er(Ĉeno::el("fek!")))
+            } plu {
+                Io(Bone(33))
             }
-        } sinon {
-            Rien
+        } plu {
+            Nenio
         }
     }
 
-    asynchrone fonction exemple() {
+    malsink funkcio ekzemplo() {
     }
 
-    asynchrone fonction exemple2() {
-        exemple().attend;
+    malsink funkcio ekzemplo2() {
+        ekzemplo().atendi;
     }
 
-    fonction principale() {
-        soit mutable x = 31;
+    funkcio ĉefo() {
+        ebligi ŝanĝebla x = 31;
 
-        selon x {
+        kompari x {
             42 => {
-                affiche!("omelette du fromage")
+                printovico!("omelette du fromage")
             }
-            _ => affiche!("voila")
+            _ => printovico!("voila")
         }
 
-        pour i de 0..10 {
-            soit val = boucle {
-                arrête i;
+        por i en 0..10 {
+            ebligi val = iteracii {
+                eksplodi i;
             };
 
-            tant que x < val {
+            dum x < val {
                 x += 1;
             }
 
-            x = si soit Quelque(resultat) = peut_etre(i) {
+            x = ĉu ebligi Io(resultat) = malnepra(i) {
                 resultat.déballer()
-            } sinon {
+            } plu {
                 12
             };
         }
 
-        //secondaire();
+        //malĉefa();
     }
 
-    #[légal(code_inaccessible)]
-    fonction secondaire() {
-        merde!("oh non"); // for the true French experience
-        calisse!("tabernacle"); // for friends speaking fr-ca
-        oups!("fetchez la vache"); // in SFW contexts
+    #[permesi(netingebla_programteksto)]
+    funkcio malĉefa() {
+        fek!("o fek!"); // for the true Esperanto experience
+        ekpaniki!("La programo malsukcesis"); // in SFW contexts
     }
 }
