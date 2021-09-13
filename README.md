@@ -15,7 +15,7 @@ your convenience.
 
 Here's an example of what can be achieved with Rustteksto:
 
-### struct and impl (aka strukt kaj realigo)
+### trait and impl (aka traijto kaj realigo)
 
 ```rust
 rustteksto::rustteksto! {
@@ -85,8 +85,14 @@ First of all, _dankon_ for considering participating to this joke! Feel free to
 throw in a few identifiers here and there, and open a pull-request against the
 `ĉefa` (Esperanto for `main`) branch.
 
-## por kio, kvankam?
+## Other languages
 
+- Dutch: [roest](https://github.com/jeroenhd/roest)
+- German: [rost](https://github.com/michidk/rost)
+- Polish: [rdza](https://github.com/phaux/rdza)
+- Italian: [ruggine](https://github.com/DamianX/ruggine)
+
+## por kio, kvankam?
 - saw [this french thing](https://github.com/bnjbvr/rouille) and thought it would be funny to expand it to Esperanto.
 
 ## la permeso
