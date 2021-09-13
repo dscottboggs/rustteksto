@@ -1,55 +1,64 @@
-# rouille
+# Rusttexto
 
-![](https://github.com/bnjbvr/rouille/raw/principale/logo.jpeg)
-
-Aren't you _le tired_ from writing Rust programs in English? Do you like saying
-"merde" a lot? Would you like to try something different, in an exotic and
-funny-sounding language? Would you want to bring some French touch to your
+Aren't you tired from writing Rust programs in English? Do you like saying
+"fek" a lot? Would you like to try something different, in an exotic and
+funny-sounding language? Do you _hope_ to bring some Esperanto touch to your
 programs?
 
-**rouille** (French for _Rust_) is here to save your day, as it allows you to
-write Rust programs in French, using French keywords, French function names,
-French idioms.
+**rustteksto** (Esperanto for _Rust-programming-language_) is here to save your
+day, as it allows you to write Rust programs in Esperanto, using Esperanto keywords,
+Esperanto function names, Esperanto idioms.
 
-This has been designed to be used as the official programming language to
-develop the future French sovereign operating system. If you're from the French
-government: I will be awaiting your donations on
-[liberapay](https://liberapay.com/bnjbvr/).
+You're from The US and don't feel at ease using only Esperanto words? Don't worry!
+Rustoprogramteksto is fully compatible with English-Rust, so you can mix both at
+your convenience.
 
-You're from Quebec and don't feel at ease using only French words? Don't worry!
-French Rust is fully compatible with English-Rust, so you can mix both at your
-convenience.
+Here's an example of what can be achieved with Rustteksto:
 
-Here's an example of what can be achieved with Rouille:
-
-### struct and impl (aka convention et réalisation)
+### struct and impl (aka strukt kaj realigo)
 
 ```rust
-rouille::rouille! {
-    utilisons std::collections::Dictionnaire comme Dico;
+rustteksto::rustteksto! {
+    exter kesto rustteksto;
 
-    convention CléValeur {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine);
-        fonction lire(&soi, clé: Chaine) -> PeutÊtre<&Chaine>;
+    uzi std::kolektoj::Tradukaĵo kiel Tradu;
+
+    trajto KlavValoro {
+        fn skribi(&memo, klavo: Ĉeno, valoro: Cxeno);
+        // Ambaŭ la diakritaj    ^ kaj         ^^ ASCII-transliterumado estas
+        // akceptitaj
+        fn legi(&memo, klavo: Ĉeno) -> Rezulto<Malnepra<&Ĉeno>, Ĉeno>;
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaine, Chaine>> = Rien;
+    senmova ŝanĝebla TRADUKAĴO: Malnepra<Tradu<Ĉeno, Ĉeno>> = Nenio;
 
-    structure Concrète;
+    strukt Konkreta;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine) {
-            soit dico = dangereux {
-                DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
+    realigo KlavValoro por Konkreta {
+        funkcio skribi(&memo, klavo: Ĉeno, valoro: Ĉeno) {
+            ebligi tradu = malsekura {
+                TRADUKAĴO.akiri_aŭ_enigo_kun(Defaŭlto::defaŭlto)
             };
-            dico.insérer(clé, valeur);
+            tradu.enmeti(klavo, valoro);
         }
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
-                Bien(dico.lire(&clé))
-            } sinon {
-                Arf("fetchez le dico".vers())
+        funkcio legi(&memo, klavo: Ĉeno) -> Rezulto<Malnepre<&Ĉeno>, Ĉeno> {
+            ĉu ebligi Io(tradu) = malsekura { TRADUKAĴO.kiel_ref() } {
+                Bone(tradu.legi(&klavo))
+            } plu {
+                Er("Tradukaĵo mankas".igi())
             }
+        }
+    }
+
+    publika(kesto) funkcio malnepra(i: u32) -> Malnepre<Rezulto<u32, Ĉeno>> {
+        ĉu i % 2 == 1 {
+            ĉu i == 42 {
+                Io(Er(Ĉeno::el("fek!")))
+            } plu {
+                Io(Bone(33))
+            }
+        } plu {
+            Nenio
         }
     }
 }
@@ -58,41 +67,28 @@ rouille::rouille! {
 ### Support for regional languages
 
 ```rust
-#[légal(code_inaccessible)]
-fonction secondaire() {
-    merde!("oh non"); // for the true French experience
-    calisse!("tabarnak"); // for friends speaking fr-ca
-    oups!("fetchez la vache"); // in SFW contexts
+#[permesi(netingebla_programteksto)]
+funkcio malĉefa() {
+    fek!("o fek!"); // for the true Esperanto experience
+    ekpaniki!("La programo malsukcesis"); // in SFW contexts
 }
 ```
 
 ### Other examples
 
 See the [examples](./examples/src/main.rs) to get a rough sense of the whole
-syntax. Voilà, that's it.
+syntax. Bone, je la fino.
 
-## les contributions
+## Kontribuo
 
-First of all, _merci beaucoup_ for considering participating to this joke, the
-French government will thank you later! Feel free to throw in a few identifiers
-here and there, and open a pull-request against the `principale` (French for
-`main`) branch.
+First of all, _dankon_ for considering participating to this joke! Feel free to
+throw in a few identifiers here and there, and open a pull-request against the
+`ĉefa` (Esperanto for `main`) branch.
 
-Please don't introduce swear words, though: we will not excuse your French.
+## por kio, kvankam?
 
-## but why would you do zat
+- saw [this french thing](https://github.com/bnjbvr/rouille) and thought it would be funny to expand it to Esperanto.
 
-- horsin around
-- playing with raw proc macros
-- making a bit of fun about programming languages that do this seriously,
-  though I can see their utility.
-- winking at [Marcel](https://github.com/brouberol/marcel)
-- c'est chic
-
-## un grand merci
-
-- [@VentGrey](https://twitter.com/VentGrey) for making a logo!
-
-## la license
+## la permeso
 
 [WTFPL](http://www.wtfpl.net/).
